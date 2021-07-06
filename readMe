@@ -1,0 +1,8 @@
+v1
+
+	para criar um projeto com Spring Boot, utilizamos o Spring Initialzr, através do site https://start.spring.io;
+	para criar um controller, utilizamos as anotações @Controller e @RequestMapping.
+	
+------------------------------------------------------------------------------------------------------------------------
+
+
