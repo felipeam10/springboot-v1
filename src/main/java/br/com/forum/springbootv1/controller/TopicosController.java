@@ -3,21 +3,20 @@ package br.com.forum.springbootv1.controller;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import br.com.forum.springbootv1.controller.dto.TopicoDto;
 import br.com.forum.springbootv1.modelo.Curso;
 import br.com.forum.springbootv1.modelo.Topico;
 
-@Controller
+@RestController
 public class TopicosController {
 
 	@RequestMapping("/topicos")
-	@ResponseBody
-	public List<Topico> lista() {
-		Topico topico = new Topico("Duvida", "Duvida no SpringBoot", new Curso("SpringBoot", "Programacao"));
+	public List<TopicoDto> lista() {
+		Topico topico = new Topico("Dúvida", "Dúvida no SpringBoot", new Curso("SpringBoot", "Programação"));
 		
-		return Arrays.asList(topico, topico, topico);
+		return TopicoDto.converter(Arrays.asList(topico, topico, topico));
 	}
 }
