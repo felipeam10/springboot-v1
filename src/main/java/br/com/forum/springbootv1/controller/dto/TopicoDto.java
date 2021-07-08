@@ -2,7 +2,7 @@ package br.com.forum.springbootv1.controller.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 import br.com.forum.springbootv1.modelo.Topico;
 
@@ -12,9 +12,8 @@ public class TopicoDto {
 	private String titulo;
 	private String mensagem;
 	private LocalDateTime dataCriacao;
-
-	public TopicoDto(TopicoDto topico) {
-		super();
+	
+	public TopicoDto(Topico topico) {
 		this.id = topico.getId();
 		this.titulo = topico.getTitulo();
 		this.mensagem = topico.getMensagem();
