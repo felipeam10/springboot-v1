@@ -26,7 +26,7 @@ public class Topico {
 	@ManyToOne
 	private Usuario autor;
 	@ManyToOne
-	private Curso curso;
+	private Curso curso; //curso eh um relacionamento. temos um topico que esta relacionado com o curso
 	@OneToMany(mappedBy = "topico") //mappedBy para indicar que nao eh um novo relacionamento pq na classe resposta vai estar mapeado o relacionamento com o topico
 	private List<Resposta> respostas = new ArrayList<>();
 	

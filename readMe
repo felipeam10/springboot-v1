@@ -20,7 +20,62 @@ v3
 
 	criado o banco de dados "forum"
 	
+	Filtros: http://localhost:8080/topicos?nomeCurso=Spring
 	
+	
+		O Spring data, na interface Repository também tem algumas facilidades nesse caso, se você quiser filtrar por algum parâmetro. 
+		A ideia é: não vamos mais utilizar o findAll(). 
+		Vamos utilizar outro método. Aí, o Spring Data tem um padrão de nomenclatura. 
+		Se você seguir esse padrão, ele consegue gerar a Query para você automaticamente. 
+		O padrão de nomenclatura seria findBy() e o nome do atributo na entidade (do atributo que você quer filtrar). 
+		Por exemplo, imagine que quero filtrar pelo Titulo, o nome do método seria findByTitulo(nomeCurso) e eu passaria o parâmetro que representa esse atributo.
+		
+		na classe Curso temos um atributo nome 
+		como que fazemos para filtrar nao por um atributo da entidade? no caso a entidade topico
+		mas quero filtrar por um atributo que eh de um relacionamento que eh da minha entidade ?
+		para que o spring filtre, precisa montar da seguinte maneira: findBy + Curso + Nome
+		curso eh a entidade de relacionamento
+		nome eh o atributo dentro desta entidade de relacionamento 
+		
+		
+		no banco:
+		
+		id|categoria  |nome       |
+		--|-----------|-----------|
+		 1|Programação|Spring Boot|
+		 2|Front-end  |HTML 5     |
+		
+		http://localhost:8080/topicos?nomeCurso=Spring+Boot
+		vai retornar:
+		[
+			{
+				"id": 1,
+				"titulo": "Dúvida",
+				"mensagem": "Erro ao criar projeto",
+				"dataCriacao": "2019-05-05T18:00:00"
+			},
+			{
+				"id": 2,
+				"titulo": "Dúvida 2",
+				"mensagem": "Projeto não compila",
+				"dataCriacao": "2019-05-05T19:00:00"
+			}
+		]
+	
+	
+		http://localhost:8080/topicos?nomeCurso=HTML+5
+		
+		vai retornar:
+		[
+			{
+				"id": 3,
+				"titulo": "Dúvida 3",
+				"mensagem": "Tag HTML",
+				"dataCriacao": "2019-05-05T20:00:00"
+			}
+		]
+		
+		
 ------------------------------------------------------------------------------------------------------------------------
 
 
