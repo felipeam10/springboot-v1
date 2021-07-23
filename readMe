@@ -75,6 +75,9 @@ v3
 			}
 		]
 		
+		Para mapear as classes de domínio da aplicação como entidade JPA, 
+devemos utilizar as anotações @Entity, @Id, @GeneratedValue, @ManyToOne, @OneToMany e 
+@Enumerated;
 		
 ------------------------------------------------------------------------------------------------------------------------
 
