@@ -4,10 +4,17 @@ import br.com.forum.springbootv1.modelo.Curso;
 import br.com.forum.springbootv1.modelo.Topico;
 import br.com.forum.springbootv1.repository.CursoRepository;
 
+import javax.validation.constraints.*;
+
+import org.hibernate.validator.constraints.Length;
+
 public class TopicoForm {
 
+	@NotNull @NotEmpty @Length(min = 5)
 	private String titulo;
+	@NotNull @NotEmpty @Length(min = 10)
 	private String mensagem;
+	@NotNull @NotEmpty
 	private String nomeCurso;
 
 	public String getTitulo() {
