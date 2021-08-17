@@ -3,9 +3,11 @@ package br.com.forum.springbootv1.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import br.com.forum.springbootv1.controller.dto.DetalhesDoTopicoDto;
+import br.com.forum.springbootv1.controller.form.AtualizacaoTopicoForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,5 +53,12 @@ public class TopicosController {
 	public DetalhesDoTopicoDto detalhar(@PathVariable Long id){
 		Topico topico = topicoRepository.getOne(id);
 		return new DetalhesDoTopicoDto(topico);
+	}
+
+	@PutMapping("/{id}")
+	@Transactional
+	public ResponseEntity<TopicoDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoTopicoForm form){
+		Topico topico = form.atualizar(id, topicoRepository);
+		return ResponseEntity.ok(new TopicoDto(topico));
 	}
 }
